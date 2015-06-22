@@ -3,7 +3,10 @@
 
 <head>
     <title>3C Programming Test- Problem 1</title>
-
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
     <style>
     html {
         width: 100%;
@@ -51,9 +54,152 @@
     <label for="zip">Zip:</label><input name="zip" id="zip" value="" placeholder="Zip..." type="text"/>
 
     <button type="submit">Submit</button>
-
-
 </form>
+<script>
+var usStates = [{ name: 'Alaska', abbreviation: 'AK', lowest_zip: '99501', highest_zip: '99950'},
+{ name: 'Alabama', abbreviation: 'AL', lowest_zip: '35004', highest_zip: '36925'},
+{ name: 'Arkansas', abbreviation: 'AR', lowest_zip: '71601', highest_zip: '72959'},
+{ name: 'Arkansas', abbreviation: 'AR', lowest_zip: '75502', highest_zip: '75502'},
+{ name: 'Arizona', abbreviation: 'AZ', lowest_zip: '85001', highest_zip: '86556'},
+{ name: 'California', abbreviation: 'CA', lowest_zip: '90001', highest_zip: '96162'},
+{ name: 'Colorado', abbreviation: 'CO', lowest_zip: '80001', highest_zip: '81658'},
+{ name: 'Connecticut', abbreviation: 'CT', lowest_zip: '6001', highest_zip: '6389'},
+{ name: 'Connecticut', abbreviation: 'CT', lowest_zip: '6401', highest_zip: '6928'},
+{ name: 'Delaware', abbreviation: 'DE', lowest_zip: '19701', highest_zip: '19980'},
+{ name: 'Florida', abbreviation: 'FL', lowest_zip: '32004', highest_zip: '34997'},
+{ name: 'Georgia', abbreviation: 'GA', lowest_zip: '30001', highest_zip: '31999'},
+{ name: 'Georga', abbreviation: 'GA', lowest_zip: '39901', highest_zip: '39901'},
+{ name: 'Hawaii', abbreviation: 'HI', lowest_zip: '96701', highest_zip: '96898'},
+{ name: 'Iowa', abbreviation: 'IA', lowest_zip: '50001', highest_zip: '52809'},
+{ name: 'Iowa', abbreviation: 'IA', lowest_zip: '68119', highest_zip: '68120'},
+{ name: 'Idaho', abbreviation: 'ID', lowest_zip: '83201', highest_zip: '83876'},
+{ name: 'Illinois', abbreviation: 'IL', lowest_zip: '60001', highest_zip: '62999'},
+{ name: 'Indiana', abbreviation: 'IN', lowest_zip: '46001', highest_zip: '47997'},
+{ name: 'Kansas', abbreviation: 'KS', lowest_zip: '66002', highest_zip: '67954'},
+{ name: 'Kentucky', abbreviation: 'KY', lowest_zip: '40003', highest_zip: '42788'},
+{ name: 'Louisiana', abbreviation: 'LA', lowest_zip: '70001', highest_zip: '71232'},
+{ name: 'Louisiana', abbreviation: 'LA', lowest_zip: '71234', highest_zip: '71497'},
+{ name: 'Massachusetts', abbreviation: 'MA', lowest_zip: '1001', highest_zip: '2791'},
+{ name: 'Massachusetts', abbreviation: 'MA', lowest_zip: '5501', highest_zip: '5544'},
+{ name: 'Maryland', abbreviation: 'MD', lowest_zip: '20331', highest_zip: '20331'},
+{ name: 'Maryland', abbreviation: 'MD', lowest_zip: '20335', highest_zip: '20797'},
+{ name: 'Maryland', abbreviation: 'MD', lowest_zip: '20812', highest_zip: '21930'},
+{ name: 'Maine', abbreviation: 'ME', lowest_zip: '3901', highest_zip: '4992'},
+{ name: 'Michigan', abbreviation: 'MI', lowest_zip: '48001', highest_zip: '49971'},
+{ name: 'Minnesota', abbreviation: 'MN', lowest_zip: '55001', highest_zip: '56763'},
+{ name: 'Mississippi', abbreviation: 'MS', lowest_zip: '38601', highest_zip: '39776'},
+{ name: 'Mississippi', abbreviation: 'MS', lowest_zip: '71233', highest_zip: '71233'},
+{ name: 'Montana', abbreviation: 'MT', lowest_zip: '59001', highest_zip: '59937'},
+{ name: 'North Carolina', abbreviation: 'NC', lowest_zip: '27006', highest_zip: '28909'},
+{ name: 'North Dakota', abbreviation: 'ND', lowest_zip: '58001', highest_zip: '58856'},
+{ name: 'Nebraska', abbreviation: 'NE', lowest_zip: '68001', highest_zip: '68118'},
+{ name: 'Nebraska', abbreviation: 'NE', lowest_zip: '68122', highest_zip: '69367'},
+{ name: 'New Hampshire', abbreviation: 'NH', lowest_zip: '3031', highest_zip: '3897'},
+{ name: 'New Jersey', abbreviation: 'NJ', lowest_zip: '7001', highest_zip: '8989'},
+{ name: 'New Mexico', abbreviation: 'NM', lowest_zip: '87001', highest_zip: '88441'},
+{ name: 'Nevada', abbreviation: 'NV', lowest_zip: '88901', highest_zip: '89883'},
+{ name: 'NewYork', abbreviation: 'NY', lowest_zip: '6390', highest_zip: '6390'},
+{ name: 'NewYork', abbreviation: 'NY', lowest_zip: '10001', highest_zip: '14975'},
+{ name: 'Ohio', abbreviation: 'OH', lowest_zip: '43001', highest_zip: '45999'},
+{ name: 'Oklahoma', abbreviation: 'OK', lowest_zip: '73001', highest_zip: '73199'},
+{ name: 'Oklahoma', abbreviation: 'OK', lowest_zip: '73401', highest_zip: '74966'},
+{ name: 'Oregon', abbreviation: 'OR', lowest_zip: '97001', highest_zip: '97920'},
+{ name: 'Pennsylvania', abbreviation: 'PA', lowest_zip: '15001', highest_zip: '19640'},
+{ name: 'Puerto Rico', abbreviation: 'PR', lowest_zip: '0', highest_zip: '0'},
+{ name: 'Rhode Island', abbreviation: 'RI', lowest_zip: '2801', highest_zip: '2940'},
+{ name: 'South Carolina', abbreviation: 'SC', lowest_zip: '29001', highest_zip: '29948'},
+{ name: 'South Dakota', abbreviation: 'SD', lowest_zip: '57001', highest_zip: '57799'},
+{ name: 'Tennessee', abbreviation: 'TN', lowest_zip: '37010', highest_zip: '38589'},
+{ name: 'Texas', abbreviation: 'TX', lowest_zip: '73301', highest_zip: '73301'},
+{ name: 'Texas', abbreviation: 'TX', lowest_zip: '75001', highest_zip: '75501'},
+{ name: 'Texas', abbreviation: 'TX', lowest_zip: '75503', highest_zip: '79999'},
+{ name: 'Texas', abbreviation: 'TX', lowest_zip: '88510', highest_zip: '88589'},
+{ name: 'Utah', abbreviation: 'UT', lowest_zip: '84001', highest_zip: '84784'},
+{ name: 'Virginia', abbreviation: 'VA', lowest_zip: '20040', highest_zip: '20041'},
+{ name: 'Virginia', abbreviation: 'VA', lowest_zip: '20040', highest_zip: '20167'},
+{ name: 'Virginia', abbreviation: 'VA', lowest_zip: '20042', highest_zip: '20042'},
+{ name: 'Virginia', abbreviation: 'VA', lowest_zip: '22001', highest_zip: '24658'},
+{ name: 'Vermont', abbreviation: 'VT', lowest_zip: '5001', highest_zip: '5495'},
+{ name: 'Vermont', abbreviation: 'VT', lowest_zip: '5601', highest_zip: '5907'},
+{ name: 'Washington', abbreviation: 'WA', lowest_zip: '98001', highest_zip: '99403'},
+{ name: 'Wisconsin', abbreviation: 'WI', lowest_zip: '53001', highest_zip: '54990'},
+{ name: 'West Virginia', abbreviation: 'WV', lowest_zip: '24701', highest_zip: '26886'},
+{ name: 'Wyoming', abbreviation: 'WY', lowest_zip: '82001', highest_zip: '83128'}];
 
+function hasANumber(text){
+    return text.match(/\d+/g);
+}
+
+function validState(state){
+
+   if (!state)
+         return true
+
+   for (var i=0; i< usStates.length; i++)
+   	if (usStates[i].name.toLowerCase() === state.toLowerCase() || usStates[i].abbreviation.toLowerCase() === state.toLowerCase())
+		return true;
+   return false;
+}
+
+function validZipAndState(state, zip){
+    if (!state || !zip)
+        return true
+    for (var i=0; i< usStates.length; i++)
+        if ((usStates[i].name.toLowerCase() === state.toLowerCase() || usStates[i].abbreviation.toLowerCase() === state.toLowerCase()) && parseInt(usStates[i].lowest_zip) <= parseInt(zip) && parseInt(usStates[i].highest_zip) >= parseInt(zip)){
+	     console.log(usState.lowest_zip);
+             console.log(usState.highest_zip);
+	     return true
+    }
+    return false	
+}
+
+//function validDate(){
+//
+//}"
+
+function hasError(){
+     return $(".alert").length>0;
+}
+
+$("button").on("click", function(){
+    $(".alert").remove();
+    validateInput();
+    if (hasError)
+        event.preventDefault();
+    else{
+	var c = confirm("Form Submitted!");
+        sleep(500);
+        return c;
+    }
+});
+
+function checkRequiredValues(){
+    $("input").each(function(){
+        if (!$(this).val() && $(this).attr("id")!=="street1" && $(this).attr("id")!=="street2")
+            errorMessage($(this).prev().text().slice(0,-1)  + "needs a value.");          
+    });
+}
+
+function validateInput(){
+    checkRequiredValues();
+    if (hasANumber($("#firstName").val())){
+       errorMessage("First name has a number.")
+    }
+    if (hasANumber($("#lastName").val())){
+       errorMessage("Last name has a number.")
+    }
+    if (!validState($("#state").val())){
+       errorMessage("State is not a valid U.S. state.");
+    }
+    else if (!validZipAndState($("#state").val(), $("#zip").val())){
+       errorMessage("Zip is not valid for given state.");
+    }
+}
+    
+function errorMessage(text){
+     $("<div class=\"alert alert-warning\"><a href=\"#\" class=\"close\" data-dismiss=\"alert\">&times;</a><strong>Warning!</strong>" + text + "</div>").insertAfter("h2");
+}  
+
+</script>
 
 </html>
